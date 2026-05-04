@@ -19,7 +19,7 @@ joke_gen_chain = RunnableSequence(prompt1, model, parser)
 
 parallel_chain = RunnableParallel({
     "joke": RunnablePassthrough(),
-    "number of words": RunnableLambda(lambda inputs: len(inputs.split(" ")))
+    "number of words": RunnableLambda(lambda inputs: len(inputs.split()))
 })
 
 final_chain = RunnableSequence(joke_gen_chain, parallel_chain)
